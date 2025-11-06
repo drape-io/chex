@@ -1,0 +1,30 @@
+# Git
+.git
+.github
+.gitignore
+
+# Development
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Build artifacts
+bin/
+dist/
+
+# Test artifacts
+coverage.out
+*.test
+
+# Documentation
+*.md
+!README.md
+
+# CI/CD
+.goreleaser.yml
+justfile
+.tool-versions
+mise.toml
+.chex.toml

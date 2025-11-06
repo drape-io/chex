@@ -1,0 +1,13 @@
+# chex configuration for chex development
+
+[go]
+cli = "go"
+version = ">=1.25.0"
+
+[golangci-lint]
+cli = "golangci-lint"
+version = ">=2.6.0"
+
+[just]
+cli = "just"
+# No version specified - just check it exists

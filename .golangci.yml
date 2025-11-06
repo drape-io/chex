@@ -1,0 +1,61 @@
+version: "2"
+linters:
+  default: all
+  disable:
+    # false positives with templ framework
+    - contextcheck
+    # annoying
+    - depguard
+    - exhaustruct
+    - forbidigo
+    - funcorder
+    - godot
+    - godox
+    - gochecknoglobals
+    - interfacebloat
+    - mnd
+    - nlreturn
+    - varnamelen
+    - wrapcheck
+    - wsl
+    - wsl_v5
+    # not applicable for CLI tools
+    - err113  # dynamic errors are fine for CLI output
+    - gosec   # CLI tool needs to execute commands and read files
+    - gochecknoinits  # init() is standard for cobra
+    - noinlineerr  # stylistic preference
+    - nonamedreturns  # can improve clarity
+    - nestif  # sometimes unavoidable
+    - paralleltest  # not required for these tests
+    - testpackage  # need same package for white-box testing
+
+  settings:
+    cyclop:
+      max-complexity: 20
+    funlen:
+      lines: 220
+      statements: 50
+    gocognit:
+      min-complexity: 35
+    lll:
+      line-length: 120
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+run:
+  timeout: 5m
