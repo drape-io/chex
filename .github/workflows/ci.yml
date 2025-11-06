@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Parse tool versions
-        uses: wistia/parse-tool-versions@v1.0
+        uses: wistia/parse-tool-versions@353ac6f3d592af47f8b0b7612a4fa1c87d2fe319
 
       - name: Set up Go
         uses: actions/setup-go@v5
