@@ -24,21 +24,56 @@ jobs:
         with:
           go-version: ${{ env.GOLANG }}
 
-      - name: Install just
-        uses: extractions/setup-just@v2
-        with:
-          just-version: ${{ env.JUST }}
-
       - name: Run tests
-        run: just test
+        run: go test -v ./...
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse tool versions
+        uses: wistia/parse-tool-versions@353ac6f3d592af47f8b0b7612a4fa1c87d2fe319
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GOLANG }}
 
       - name: Check formatting
-        run: just format-check
+        run: |
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "Files need formatting:"
+            gofmt -l .
+            exit 1
+          fi
 
       - name: Run linter
         uses: golangci/golangci-lint-action@v7
         with:
           version: v${{ env.GOLANGCI_LINT }}
+
+  validate:
+    name: Validate (run chex on itself)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse tool versions
+        uses: wistia/parse-tool-versions@353ac6f3d592af47f8b0b7612a4fa1c87d2fe319
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GOLANG }}
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+        with:
+          just-version: ${{ env.JUST }}
 
       - name: Build
         run: just build
