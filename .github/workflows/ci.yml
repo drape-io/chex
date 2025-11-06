@@ -25,7 +25,7 @@ jobs:
           go-version: ${{ env.GOLANG }}
 
       - name: Install golangci-lint
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v7
         with:
           version: v${{ env.GOLANGCI_LINT }}
           args: --version
