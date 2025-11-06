@@ -277,7 +277,6 @@ version = ">=1.20.0"
 
 [golangci-lint]
 cli = "golangci-lint"
-# Just check it exists (avoid OOM on version check)
 
 [just]
 cli = "just"
@@ -390,7 +389,7 @@ just run go docker
 
 ## License
 
-Apache 2.0 - See LICENSE file for details.
+MPL 2.0 - See LICENSE file for details.
 
 ## Contributing
 
