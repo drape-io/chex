@@ -22,18 +22,18 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GOLANG_VERSION }}
+          go-version: ${{ env.GOLANG }}
 
       - name: Install golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v${{ env.GOLANGCI_LINT_VERSION }}
+          version: v${{ env.GOLANGCI_LINT }}
           args: --version
 
       - name: Install just
         uses: extractions/setup-just@v2
         with:
-          just-version: ${{ env.JUST_VERSION }}
+          just-version: ${{ env.JUST }}
 
       - name: Run tests
         run: just test

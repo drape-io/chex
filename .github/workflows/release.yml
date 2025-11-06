@@ -24,7 +24,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GOLANG_VERSION }}
+          go-version: ${{ env.GOLANG }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
