@@ -24,12 +24,6 @@ jobs:
         with:
           go-version: ${{ env.GOLANG }}
 
-      - name: Install golangci-lint
-        uses: golangci/golangci-lint-action@v7
-        with:
-          version: v${{ env.GOLANGCI_LINT }}
-          args: --version
-
       - name: Install just
         uses: extractions/setup-just@v2
         with:
@@ -42,7 +36,9 @@ jobs:
         run: just format-check
 
       - name: Run linter
-        run: golangci-lint run
+        uses: golangci/golangci-lint-action@v7
+        with:
+          version: v${{ env.GOLANGCI_LINT }}
 
       - name: Build
         run: just build
